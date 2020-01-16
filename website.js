@@ -91,7 +91,7 @@ function link(linkContent, linkAttribute, clsName) {
   clsName.appendChild(a);
 }
 //############################################################################## function for creating images
-function img(imgSrc, imgName, clsName) {
+function img(clsName, imgSrc, imgName) {
   let img = document.createElement("img");
   img.clsName = "image";
   img.setAttribute("src", imgSrc);
@@ -250,6 +250,81 @@ serviceTop[3] = subTitle(serviceBottom[3], "service-type-title", "Marketing");
 serviceBottom[3] = icon(serviceTop[3], "fas", "fa-bullhorn");
 const serviceTypeTitle = document.querySelectorAll(".service-type-title");
 const serviceTypeIcon = document.querySelectorAll(".service-bottom i");
+// ##################################################################################################################### end service section
+// ##################################################################################################################### start work section
+childDiv(work, "work-title");
+const workTitleContent = document.querySelector(".work-title");
+title(workTitleContent, "work-lg-text", "Our Services");
+childDiv(workTitleContent, "work-border");
+subTitle(
+  workTitleContent,
+  "work-sm-text",
+  "Take a look at what we can do for you"
+);
+childDiv(work, "work-type");
+const workType = document.querySelector(".work-type");
+workType.style.textAlign = "center";
+childDiv(workType, "work-type-categories");
+childDiv(workType, "work-type-categories");
+childDiv(workType, "work-type-categories");
+const workTypeCategories = document.querySelectorAll(".work-type-categories");
+for (let i = 0; i < workTypeCategories.length; i++) {
+  workTypeCategories[i] = childDiv(workTypeCategories[i], "work-type-title");
+  workTypeCategories[i] = childDiv(workTypeCategories[i], "work-type-content");
+}
+const workCategoryOneTitle = workTypeCategories[0].firstChild;
+const workCategoryTwoTitle = workTypeCategories[1].firstChild;
+const workCategoryThreeTitle = workTypeCategories[2].firstChild;
+const workCategoryOneContent = workTypeCategories[0].lastChild;
+const workCategoryTwoContent = workTypeCategories[1].lastChild;
+const workCategoryThreeContent = workTypeCategories[2].lastChild;
+subTitle(workCategoryOneTitle, "work-cat-title", "JavaScript");
+subTitle(workCategoryTwoTitle, "work-cat-title", "React");
+subTitle(workCategoryThreeTitle, "work-cat-title", "PHP");
+const workTypeContentItem = document.querySelectorAll(".work-type-content");
+for (let i = 0; i < workTypeContentItem.length; i++) {
+  workTypeContentItem[i] = childDiv(
+    workTypeContentItem[i],
+    "work-type-content-item"
+  );
+  childDiv(workTypeContentItem[i], "work-type-content-item");
+  childDiv(workTypeContentItem[i], "work-type-content-item");
+  childDiv(workTypeContentItem[i], "work-type-content-item");
+  workTypeContentItem[i].style.position = "absolute";
+  workTypeContentItem[i].style.width = "100%";
+  workTypeContentItem[i].style.background = "red";
+  workTypeContentItem[i].style.display = "grid";
+  workTypeContentItem[i].style.gridTemplateColumns = "25% 25% 25% 25%";
+}
+const workTypeContentItemInner = document.querySelectorAll(
+  ".work-type-content-item"
+);
+for (let i = 0; i < workTypeContentItemInner.length; i++) {
+  workTypeContentItemInner[i] = childDiv(
+    workTypeContentItemInner[i],
+    "work-type-content-item-inner"
+  );
+}
+
+img(workTypeContentItem[0].firstChild, "./img/hero-bg.jpg", "ss");
+img(workTypeContentItem[0].firstChild.nextSibling, "./img/hero-bg.jpg", "ss");
+img(
+  workTypeContentItem[0].firstChild.nextSibling.nextSibling,
+  "./img/hero-bg.jpg",
+  "ss"
+);
+img(
+  workTypeContentItem[0].firstChild.nextSibling.nextSibling.nextSibling,
+  "./img/hero-bg.jpg",
+  "ss"
+);
+// img(workTypeContentItem[1].firstChild.firstChild, "./img/hero-bg.jpg", "ss");
+// img(workTypeContentItem[2].firstChild.firstChild, "./img/hero-bg.jpg", "ss");
+// img(workTypeContentItem[3].firstChild.firstChild, "./img/hero-bg.jpg", "ss");
+// img(workTypeContentItem[1].firstChild, "./img/hero-bg.jpg", "ss");
+// img(workTypeContentItem[1].firstChild, "./img/hero-bg.jpg", "ss");
+// img(workTypeContentItem[0].firstChild, "./img/hero-bg.jpg", "ss");
+
 //############################################################################################### creating the styles
 //###############################################################  style for container
 container.forEach(containerElement => {
@@ -441,7 +516,6 @@ servicesSubTitle.style.textTransform = "capitalize";
 servicesSubTitle.style.padding = "2px 0";
 serviceType.style.width = "100%";
 serviceType.style.margin = "50px 0 0";
-serviceType.style.background = "red";
 serviceType.style.display = "grid";
 serviceType.style.gridTemplateColumns = "25% 25% 25% 25%";
 // style for service top
@@ -449,7 +523,7 @@ serviceTop.forEach(top => {
   top.style.width = "100%";
   top.style.textAlign = "center";
   top.firstChild.style.color = textWhite;
-  top.firstChild.style.lineHeight = "200px";
+  top.firstChild.style.lineHeight = "250px";
   top.firstChild.style.textTransform = "uppercase";
   top.firstChild.style.textAlign = "center";
   top.firstChild.style.padding = "5px";
@@ -467,7 +541,7 @@ serviceBottom.forEach(bottom => {
   bottom.style.width = "100%";
   bottom.style.textAlign = "center";
   bottom.firstChild.style.color = textWhite;
-  bottom.firstChild.style.lineHeight = "200px";
+  bottom.firstChild.style.lineHeight = "250px";
   bottom.firstChild.style.textTransform = "uppercase";
 });
 serviceBottom[0].style.background = colorLightBlue;
@@ -478,3 +552,25 @@ serviceBottom[2].style.background = colorDarkBlue;
 serviceBottom[2].style.fontSize = `50px`;
 serviceBottom[3].style.background = colorPurple;
 serviceBottom[3].style.fontSize = `12px`;
+// ##################################################################################################### start work style
+// ########################################################################## work title style
+work.style.marginTop = "50px";
+work.style.padding = "50px 0";
+workTitleContent.firstChild.style.textAlign = "center";
+workTitleContent.firstChild.style.fontWeight = "600";
+workTitleContent.firstChild.style.fontSize = `${fontLarge}px`;
+workTitleContent.firstChild.style.letterSpacing = "1px";
+workTitleContent.firstChild.style.color = colorPurple;
+workTitleContent.firstChild.nextSibling.style.height = "2px";
+workTitleContent.firstChild.nextSibling.style.width = "10%";
+workTitleContent.firstChild.nextSibling.style.margin = "2px auto";
+workTitleContent.firstChild.nextSibling.style.background = colorPurple;
+workTitleContent.firstChild.nextSibling.nextSibling.style.textAlign = "center";
+workTitleContent.firstChild.nextSibling.nextSibling.style.fontSize = `${fontSmall}px`;
+workTitleContent.firstChild.nextSibling.nextSibling.style.color = lightGray;
+workTitleContent.firstChild.nextSibling.nextSibling.style.fontWeight = "100";
+workTitleContent.firstChild.nextSibling.nextSibling.style.textTransform =
+  "capitalize";
+workTitleContent.firstChild.nextSibling.nextSibling.style.padding = "2px 0";
+workType.style.display = "grid";
+workType.style.gridTemplateColumns = "33.33% 33.33% 33.33%";
