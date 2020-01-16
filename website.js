@@ -8,6 +8,8 @@ const backgroundStrongPurpleRGBA = "rgba(252,81,133,0.6)";
 const backgroundStrongRGBA = "rgba(54,79,107,0.6)";
 const colorPurple = "#fc5185";
 const colorDarkBlue = "#364f6b";
+const colorLightBlue = "#071e3d";
+const colorStrongPurple = "#9e579d";
 const textPurple = "#fc5185";
 const fontXSmall = "14";
 const fontSmall = "16";
@@ -27,7 +29,13 @@ function childDiv(parentClass, childClass) {
   div.className = childClass;
   parentClass.appendChild(div);
 }
-// function for creating span element
+// ############################################################### function for creating font-awesome-icon
+function icon(clsName, iconClassOne, iconClassTwo) {
+  let i = document.createElement("i");
+  i.classList.add(iconClassOne, iconClassTwo);
+  clsName.appendChild(i);
+}
+//################################################################ function for creating span element
 function spanEl(clsName, spanContent) {
   let span = document.createElement("span");
   let spanCont = document.createTextNode(spanContent);
@@ -210,21 +218,38 @@ subTitle(
 );
 childDiv(services, "service-type");
 const serviceType = document.querySelector(".service-type");
-childDiv(serviceType, "inner-service");
-childDiv(serviceType, "inner-service");
-childDiv(serviceType, "inner-service");
-childDiv(serviceType, "inner-service");
-const serviceOne = serviceType.firstChild;
-const serviceTwo = serviceType.firstChild.nextSibling;
-const serviceThree = serviceType.firstChild.nextSibling.nextSibling;
-const serviceFour = serviceType.firstChild.nextSibling.nextSibling.nextSibling;
-subTitle(serviceOne, "service-title", "web development");
-subTitle(serviceTwo, "service-title", "web design");
-subTitle(serviceThree, "service-title", "SEO");
-subTitle(serviceFour, "service-title", "Marketing");
+childDiv(serviceType, "service-card");
+childDiv(serviceType, "service-card");
+childDiv(serviceType, "service-card");
+childDiv(serviceType, "service-card");
+const serviceCard = document.querySelectorAll(".service-type .service-card");
 const servicesTitle = document.querySelector(".services-lg-text");
 const servicesBorder = document.querySelector(".services-border");
 const servicesSubTitle = document.querySelector(".services-sm-text");
+for (let i = 0; i < serviceCard.length; i++) {
+  serviceCard[i] = childDiv(serviceCard[i], "service-top");
+  serviceCard[i] = childDiv(serviceCard[i], "service-bottom");
+}
+const serviceTop = document.querySelectorAll(".service-top");
+const serviceBottom = document.querySelectorAll(".service-bottom");
+serviceTop[0] = subTitle(
+  serviceTop[0],
+  "service-type-title",
+  "web development"
+);
+serviceBottom[0] = icon(serviceBottom[0], "fas", "fa-code");
+serviceTop[1] = icon(serviceTop[1], "fas", "fa-palette");
+serviceBottom[1] = subTitle(
+  serviceBottom[1],
+  "service-type-title",
+  "web design"
+);
+serviceTop[2] = subTitle(serviceTop[2], "service-type-title", "SEO");
+serviceBottom[2] = icon(serviceBottom[2], "fas", "fa-chart-line");
+serviceTop[3] = subTitle(serviceBottom[3], "service-type-title", "Marketing");
+serviceBottom[3] = icon(serviceTop[3], "fas", "fa-bullhorn");
+const serviceTypeTitle = document.querySelectorAll(".service-type-title");
+const serviceTypeIcon = document.querySelectorAll(".service-bottom i");
 //############################################################################################### creating the styles
 //###############################################################  style for container
 container.forEach(containerElement => {
@@ -320,8 +345,8 @@ navLink.forEach(navigationLink => {
     navigationLink.style.transition = "0.4s";
   });
 });
-// ################################################################################################### start about secton style
-about.style.marginTop = "50px";
+// ################################################################################################### start about section style
+about.style.marginTop = "100px";
 about.style.padding = "50px 0";
 aboutLgText.style.textAlign = "center";
 aboutLgText.style.fontWeight = "600";
@@ -419,3 +444,37 @@ serviceType.style.margin = "50px 0 0";
 serviceType.style.background = "red";
 serviceType.style.display = "grid";
 serviceType.style.gridTemplateColumns = "25% 25% 25% 25%";
+// style for service top
+serviceTop.forEach(top => {
+  top.style.width = "100%";
+  top.style.textAlign = "center";
+  top.firstChild.style.color = textWhite;
+  top.firstChild.style.lineHeight = "200px";
+  top.firstChild.style.textTransform = "uppercase";
+  top.firstChild.style.textAlign = "center";
+  top.firstChild.style.padding = "5px";
+});
+serviceTop[0].style.background = colorDarkBlue;
+serviceTop[0].style.fontSize = `12px`;
+serviceTop[1].style.background = colorPurple;
+serviceTop[1].style.fontSize = `50px`;
+serviceTop[2].style.background = colorLightBlue;
+serviceTop[2].style.fontSize = `12px`;
+serviceTop[3].style.background = colorStrongPurple;
+serviceTop[3].style.fontSize = `50px`;
+// service bottom
+serviceBottom.forEach(bottom => {
+  bottom.style.width = "100%";
+  bottom.style.textAlign = "center";
+  bottom.firstChild.style.color = textWhite;
+  bottom.firstChild.style.lineHeight = "200px";
+  bottom.firstChild.style.textTransform = "uppercase";
+});
+serviceBottom[0].style.background = colorLightBlue;
+serviceBottom[0].style.fontSize = `50px`;
+serviceBottom[1].style.background = colorStrongPurple;
+serviceBottom[1].style.fontSize = `12px`;
+serviceBottom[2].style.background = colorDarkBlue;
+serviceBottom[2].style.fontSize = `50px`;
+serviceBottom[3].style.background = colorPurple;
+serviceBottom[3].style.fontSize = `12px`;
